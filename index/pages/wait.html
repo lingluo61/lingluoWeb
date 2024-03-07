@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    登录成功，<span id="myspan">5</span>秒后自动跳转到管理页面
+    <script>
+      function getLabel(id) {
+        return document.getElementById(id);
+      }
+      function changeSec() {
+        //得到myspan值，每秒减一，会进行隐式转换
+        getLabel("myspan").innerText = getLabel("myspan").innerText - 1;
+      }
+      var mytime = setInterval("changeSec()", 1000);
+      //五秒后跳转
+      function tiao() {
+        clearInterval(mytime);
+        //在新窗口打开一个新页面
+        //window.open("/pages/home.html","_self");
+        //在当前窗口打开一个新页面
+        window.location.href = "./home.html";
+      }
+
+      setTimeout("tiao()", 5000);
+    </script>
+  </body>
+</html>
